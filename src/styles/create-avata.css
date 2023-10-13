@@ -1,12 +1,18 @@
 .container__avata{
     display: flex;
-    max-width: 1024px;
+    max-width: 1000px;
     margin: auto;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 50px;
     /* background-color: var(--primary-color); */
+    /* background-color:linear-gradient(#e66465, #9198e5);
+    background-color:rgb(223, 153, 153); 
+    background-color:rgb(22, 144, 184);  */
+    /* background:linear-gradient(#e66465, #9198e5); */
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+
     padding: 30px;
     border-radius: 10px;
     border: 1px solid var(--texr-color);
@@ -14,13 +20,22 @@
 
 }
 
+.img__box #canvas{
+    width: 100%;
+    height: 100%;
+  
+}
 .container__avata .img__box{
     width: 300px;
     height: 300px;;
-    border: 1px solid black;
+    border: 2px solid var(--text-color);
     margin-bottom: 20px;
+    border-radius: 2px;
 }
 
+.container__avata .img__box #canvas .img-avata{
+    
+}
 
 .container__avata .container__input{
     display: flex;

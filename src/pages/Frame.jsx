@@ -5,7 +5,9 @@ const Frame = () => {
   return (
     <div className='container__avata'>
         <div className='img__box'>
-            <Link to='/home/custem'><img src='logo.png'></img></Link>
+            <Link to='/home/custem'>
+              <canvas></canvas>
+            </Link>
         </div>
        <div className='container__input'>
             <label>Chọn farme</label>

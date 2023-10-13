@@ -1,25 +1,11 @@
 import React from 'react'
 import "../styles/home.css"
 import { Box } from '../components/Box/Box'
+import data from '../data/User.json'
 const Home = () => {
   return (
     <div className='container'>
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
-        <Box />
+        {data.map(user => <Box props={user}/>)}
     </div>
   )
 }
