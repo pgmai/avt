@@ -1,10 +1,13 @@
-import React,{useState , useEffect , useRef} from 'react'
+import React,{useState , useEffect , useRef , createRef} from 'react'
 import '../styles/create-avata.css'
 import { Link } from 'react-router-dom'
+import Cropper from "react-cropper";
+import "../styles/fix-size.css"
+import "../../node_modules/cropperjs/dist/cropper.css"
 const CreateAvata = () => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
-    const [data , setData] = useState();
+    const [data , setData] = useState('./child.jpg');
     // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
         if (!selectedFile) {
@@ -45,11 +48,6 @@ const CreateAvata = () => {
           }
       }, [preview]);
       
-      const saveLocal = ()=>{
-        localStorage.setItem('state', `${data}`);
-      }
-      saveLocal();
-
     const onSelectFileFinal = e => {
         if (!e.target.files || e.target.files.length === 0) {
             setSelectedFile(undefined)
@@ -67,17 +65,51 @@ const CreateAvata = () => {
         // I've kept this example simple by using the first image instead of multiple
         setSelectedFile(e.target.files[0])
       }
-
+      const [cropData, setCropData] = useState();
+      const cropperRef = createRef();
+      const onCrop = () => {
+            setCropData(cropperRef.current?.cropper.getCroppedCanvas().toDataURL("image/png"));
+      };
+      const saveCrop = ()=>{
+        const a = document.createElement('a');
+        a.href = cropData;
+        a.download = 'dowload.png';
+        a.click();
+      }
       // gửi data canvas lên url
   return (
     <form>
-    {/* {selectedFile && <img src={preview} alt=""/>} */}
-
     <div className='container__avata'>
-        <div className='img__box'>
-            <Link to={`/home/custem`}>
+      <div className='img-container'  >
+        <Cropper 
+            ref={cropperRef}
+            src={data}
+            style={{ height: "100%" ,width: "100%" , maxWidth: '100%' }}
+            aspectRatio={1}
+            zoomTo={0.5}
+            initialAspectRatio={1}
+            preview=".img-preview"
+            viewMode={1}
+            minCropBoxHeight={10}
+            minCropBoxWidth={10}
+            background={false}
+            responsive={true}
+            autoCropArea={1}
+            checkOrientation={false} 
+            guides={true}
+            crop={onCrop}
+            className='cropper'
+        />
+        <div className="box" style={{ width: "50%", float: "right" }}>
+          <h1>Preview</h1>
+          <div
+            className="img-preview"
+            style={{ width: "100%", float: "left", height: "35rem" ,border:"1px solid var(--primary-color)" }}
+          />
+    </div>
+      </div> 
+        <div className='img__box' hidden>
               <canvas id='canvas' ref={canvasRef} width={500} height={500}></canvas>
-            </Link>
         </div>
        <div className='container__input'>
             <label>Chọn avata</label>
@@ -97,17 +129,7 @@ const CreateAvata = () => {
               accept='image/*'
               onChange={onSelectFileFrame}
               />
-            <button className='btn-success' onClick={e => {
-                const canvas = canvasRef.current;
-                const dataUrl = canvas.toDataURL();
-                  // create a tag
-                  const a = document.createElement('a');
-                  a.download = 'download.png';
-                  a.href = dataUrl;
-                  a.click();
-}
-
-            }>Save</button>
+            <button className='btn-success' onClick={saveCrop}>Save</button>
        </div>
     </div>
     </form>
