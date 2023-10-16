@@ -6,7 +6,8 @@ const Frame = () => {
     <div className='container__avata'>
         <div className='img__box'>
             <Link to='/home/custem'>
-              <canvas></canvas>
+              {/* <canvas></canvas> */}
+              <img src="./logo.png" alt="" srcset="" />
             </Link>
         </div>
        <div className='container__input'>

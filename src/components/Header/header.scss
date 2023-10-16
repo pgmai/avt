@@ -25,21 +25,7 @@
     }
     .input__box{
         position: relative;
-        .search__input{
-            position: absolute;
-            bottom: 1rem;
-            border: 2px solid var(--primary-color);
-            border-radius: 1rem;
-            width: 50rem;
-            left: -20rem;
-            outline: none;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            transition: cubic-bezier(0.165, 0.84, 0.44, 1) 0.5s;
-        }
-        .search__input:focus{
-            border:2px solid var(--secondary-color); ;
-        }
+        
     }
     .container__left{
         width: 50%;

@@ -26,7 +26,7 @@ const Login = () => {
       </div>
 
     <div class="row">
-      <a href="#" target="blank" className='forgot-password'>Forgot password?</a> 
+      <a href="#" target="blank" className='forgot-password' >Forgot password?</a> 
     </div>
 </div>
 

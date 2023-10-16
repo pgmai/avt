@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 const CreateAvata = () => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
+    const [data , setData] = useState();
     // create a preview as a side effect, whenever selected file is changed
     useEffect(() => {
         if (!selectedFile) {
@@ -24,8 +25,9 @@ const CreateAvata = () => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let base_image = new Image();
-          preview ? base_image.src = preview : base_image.src = './icon-default.png' ;
+          base_image.src = preview ;
           base_image.className = "img-avata";
+          base_image.id = "input_img";
           base_image.onload = ()=>{
             let wrh = base_image.width / base_image.height;
             let newWidth = canvas.width;
@@ -39,9 +41,15 @@ const CreateAvata = () => {
             let yOffset = newHeight < canvas.height ? ((canvas.height - newHeight) / 2) : 0;
             
           ctx.drawImage(base_image, xOffset , yOffset  , newWidth , newHeight);
+          setData(canvas.toDataURL('image/png'))
           }
       }, [preview]);
       
+      const saveLocal = ()=>{
+        localStorage.setItem('state', `${data}`);
+      }
+      saveLocal();
+
     const onSelectFileFinal = e => {
         if (!e.target.files || e.target.files.length === 0) {
             setSelectedFile(undefined)
@@ -58,18 +66,17 @@ const CreateAvata = () => {
         }
         // I've kept this example simple by using the first image instead of multiple
         setSelectedFile(e.target.files[0])
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
       }
 
+      // gửi data canvas lên url
   return (
     <form>
     {/* {selectedFile && <img src={preview} alt=""/>} */}
 
     <div className='container__avata'>
         <div className='img__box'>
-            <Link to='/home/custem'  >
-              <canvas id='canvas' ref={canvasRef} width={1024} height={1024}></canvas>
+            <Link to={`/home/custem`}>
+              <canvas id='canvas' ref={canvasRef} width={500} height={500}></canvas>
             </Link>
         </div>
        <div className='container__input'>
@@ -100,7 +107,7 @@ const CreateAvata = () => {
                   a.click();
 }
 
-            }>Hoàn thành</button>
+            }>Save</button>
        </div>
     </div>
     </form>

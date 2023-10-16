@@ -1,4 +1,4 @@
-.container__avata{
+.wrapper{
     display: flex;
     max-width: 1000px;
     margin: auto;
@@ -12,56 +12,57 @@
     background-color:rgb(22, 144, 184);  */
     /* background:linear-gradient(#e66465, #9198e5); */
     background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
-
     padding: 30px;
     border-radius: 10px;
     border: 1px solid var(--texr-color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.img-container{
+    max-width: 100%;
+    height: 35rem;
+    margin: auto;
+    margin-top: 4rem;
+    border: 1px solid black; border-radius: 10px;
+    border: 1px solid var(--texr-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1024px;
+    background:linear-gradient(#e66465, #9198e5);
 
 }
 
-.img__box #canvas{
+.img-container div{
+   
+}
+.img-container div img {
     width: 100%;
     height: 100%;
-  
-}
-.container__avata .img__box{
-    width: 300px;
-    height: 300px;;
-    border: 2px solid var(--text-color);
-    margin-bottom: 20px;
-    border-radius: 5px;
+    display: block;
+    max-width: 100%;
 }
 
-.container__avata .img__box #canvas .img-avata{
-    
-}
+.box {
+    display: inline-block;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .img-preview {
+    overflow: hidden;
+  }
 
-.container__avata .container__input{
+  .btn-save{
     display: flex;
-    flex-direction: column;
-
-}
-
-.container__avata .container__input input{
-    padding: 10px 10px;
+    position: relative;
+    bottom: 0;
+    margin: auto;
+    margin-top: 3rem;
+    padding: 2rem 8rem;
     background: var(--primary-color);
-    border-radius: 0.2rem;
-
-}
-
-.container__avata .container__input label{
-    font-size: 1.5rem;
-}
-.container__avata .container__input button{
-    margin-top:2rem;
-    padding: 1rem;
-    background: var(--secondary-color);
-    border: 1px solid var(--texr-color); 
-    border-radius: 2rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    color: white;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
     font-size: 2rem;
     font-weight: bold;
-
-}
+    color: aliceblue;
+  }
+  

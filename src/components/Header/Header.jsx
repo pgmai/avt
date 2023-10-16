@@ -1,7 +1,6 @@
 import React , {useEffect, useRef} from 'react'
 import "./header.scss";
 import { Link, NavLink } from 'react-router-dom';
-import CustemInput from '../Custeminput/CustemInput';
 const Header = () => {
     const nav__link = [
         {
@@ -44,10 +43,7 @@ const Header = () => {
                 <img src='/logo.svg' alt='sdeaew'/>
             </div>
         </div>
-            {/* <CustemInput 
-                type="text" 
-                className="search__input" /> */}
-        {/* Trang chu , generate avata , contact  */}
+          
         <ul className='container__left'>
             {
                 nav__link.map(item =>{
